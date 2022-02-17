@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/txt_cedula"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:maxLength="10" />
 
     <EditText
         android:id="@+id/editTextTextNombreRegistro"
@@ -21,7 +22,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/txt_Nombre"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:maxLength="15" />
 
     <EditText
         android:id="@+id/editTextTextContraseñaRegistro"
@@ -29,11 +31,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/txt_Contraseña"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:maxLength="10" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="registrar"
         android:text="Registrar" />
 </LinearLayout>
