@@ -29,6 +29,8 @@ public class RegistrarTareaActivityKDCC extends AppCompatActivity {
     String tipo ;
     ArrayList<String> op = new ArrayList<String>();
     String cedula;
+    String tarea_;
+    String _notas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,14 @@ public class RegistrarTareaActivityKDCC extends AppCompatActivity {
         setContentView(R.layout.activity_registrar_tarea_kdcc);
 
         cedula = getIntent().getExtras().getString("cedula");
-
+        tarea_= getIntent().getExtras().getString("tarea");
+        _notas= getIntent().getExtras().getString("notas");
 
         editTextTarea = findViewById(R.id.editTextTextTarea);
         editTextNotas = findViewById(R.id.editTextTextNotas);
         spinnerTipo = findViewById(R.id.spinnerTipo);
-
+        editTextTarea.setText(tarea_);
+        editTextNotas.setText(_notas);
         op.add("Personal");
         op.add("Negocios");
 

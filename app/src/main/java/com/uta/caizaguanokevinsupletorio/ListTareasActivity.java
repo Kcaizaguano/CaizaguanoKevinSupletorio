@@ -2,6 +2,7 @@ package com.uta.caizaguanokevinsupletorio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -87,11 +88,19 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        getMenuInflater().inflate(R.menu.menucrudkdcc,menu);
+        //getMenuInflater().inflate(R.menu.menucrudkdcc,menu);
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this,  "la posicion es ", Toast.LENGTH_SHORT).show();
+
+        ListAdapter la = (ListAdapter) adapterView.getAdapter();
+
+        //Toast.makeText(view.getContext(), la.getItem(i).toString(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,RegistrarTareaActivityKDCC.class);
+        intent.putExtra("tarea",mAdpater.getItem(i).getTarea());
+        intent.putExtra("notas",mAdpater.getItem(i).getDescripcion());
+        intent.putExtra("cedula",cedula);
+        startActivity(intent);
     }
 }
