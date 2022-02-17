@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
@@ -132,6 +133,41 @@ public class RegistrarTareaActivityKDCC extends AppCompatActivity {
 
        // int cantidad = sql.update("Tareas",lstvalores,"Codigo="+ codigo,null);
         sql.close();
+
+    }
+
+
+    public  void borrarTarea( View view){
+
+
+        try {
+
+
+            String tareA = editTextTarea.getText().toString();
+
+            TareaHelperKDCC tareaHelperKDCCHelper= new TareaHelperKDCC(this
+                    ,"tareasDB",null,1);
+            SQLiteDatabase sql = tareaHelperKDCCHelper.getReadableDatabase();
+            String consulta = "SELECT Codigo FROM Tareas  WHERE Tarea=" + tareA;
+
+            Cursor cursor = sql.rawQuery(consulta,null);
+
+            if ( cursor.moveToFirst()){
+
+                Toast.makeText(this, cursor.getInt(0), Toast.LENGTH_SHORT).show();
+
+            }else{
+                Toast.makeText(this, "No se  encotraron registrso en la tabla ",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            sql.close();
+
+        }catch (Exception ex){
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 }
