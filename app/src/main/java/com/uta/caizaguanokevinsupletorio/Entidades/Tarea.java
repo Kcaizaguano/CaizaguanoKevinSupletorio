@@ -7,15 +7,18 @@ public class Tarea {
      private  String Descripcion;
      private  String Tipo;
 
+
+
      public Tarea(){
 
      }
 
-     public Tarea(String cedula, String tarea, String descripcion, String tipo) {
+     public Tarea(String cedula, String tarea, String descripcion, String tipo ) {
           Cedula = cedula;
           Tarea = tarea;
           Descripcion = descripcion;
           Tipo = tipo;
+
      }
 
      public String getCedula() {

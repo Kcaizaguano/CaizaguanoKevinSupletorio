@@ -53,17 +53,19 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
                     t.setTarea(cursor.getString(1));
                     t.setTipo(cursor.getString(2));
                     t.setDescripcion(cursor.getString(3));
+
                     mlista.add(t);
                 }while (cursor.moveToNext());
 
             }
 
-        }else{
+        }else
 
+        if (negocio.equals("*")){
             TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
             SQLiteDatabase sql = tareasHelper.getReadableDatabase();
 
-            String consulta = "SELECT Cedula,Tarea,Tipo,Notas FROM Tareas  WHERE Tipo='Negocios' AND Cedula=" + cedula;
+            String consulta = "SELECT Cedula,Tarea,Tipo,Notas FROM Tareas  WHERE Cedula=" + cedula;
             Cursor cursor =  sql.rawQuery(consulta, null);
             if (cursor.moveToFirst()){
                 do {
@@ -78,7 +80,30 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
 
             }
 
+        }else {
+
+            TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
+            SQLiteDatabase sql = tareasHelper.getReadableDatabase();
+
+            String consulta = "SELECT Cedula,Tarea,Tipo,Notas FROM Tareas  WHERE Tipo='Negocios' AND Cedula=" + cedula;
+            Cursor cursor =  sql.rawQuery(consulta, null);
+            if (cursor.moveToFirst()){
+                do {
+
+                    Tarea t = new Tarea();
+                    t.setCedula(cursor.getString(0));
+                    t.setTarea(cursor.getString(1));
+                    t.setTipo(cursor.getString(2));
+                    t.setDescripcion(cursor.getString(3));
+
+                    mlista.add(t);
+                }while (cursor.moveToNext());
+
+            }
+
         }
+
+
 
       mAdpater = new ListAdapterCCKD (ListTareasActivity.this,R.layout.item_rouwkdcc,mlista);
 
@@ -96,9 +121,11 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
 
+        AdapterView.AdapterContextMenuInfo i = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
         switch (item.getItemId()){
             case R.id.CrudBorrar:
-                Toast.makeText(this, "selecciono borrar", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, i.position, Toast.LENGTH_SHORT).show();
 
                 return  true;
         }

@@ -18,8 +18,8 @@
         android:layout_marginStart="112dp"
         android:layout_marginEnd="194dp"
         android:layout_toEndOf="@+id/checkBox"
-        android:text="TextView"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/textViewNotas"
@@ -28,7 +28,8 @@
         android:layout_below="@+id/textViewTarea"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="17dp"
-        android:layout_marginEnd="297dp"
-        android:text="TextView"
-        android:focusable="false"/>
+        android:layout_marginEnd="270dp"
+        android:focusable="false"
+        android:text="TextView" />
+
 </RelativeLayout>

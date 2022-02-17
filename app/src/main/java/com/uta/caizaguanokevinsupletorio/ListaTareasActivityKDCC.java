@@ -156,6 +156,7 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
     public  void  mostrarTareas(View view){
         Intent intent = new Intent(this,ListTareasActivity.class);
         intent.putExtra("cedula",cedula);
+        intent.putExtra("negocio","*");
         startActivity(intent);
     }
 }
