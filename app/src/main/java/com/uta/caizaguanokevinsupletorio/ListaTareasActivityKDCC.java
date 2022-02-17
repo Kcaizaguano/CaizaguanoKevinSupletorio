@@ -52,7 +52,11 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition());
 
                 if (tab.getPosition() == 0){
-                    pagerAdapter.notifyDataSetChanged();
+                    //pagerAdapter.notifyDataSetChanged();
+                    //Toast.makeText(ListaTareasActivityKDCC.this, "personas", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ListaTareasActivityKDCC.this,ListTareasActivity.class);
+                    intent.putExtra("cedula",cedula);
+                    startActivity(intent);
                 }
 
                 if (tab.getPosition() == 1){
