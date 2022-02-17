@@ -21,6 +21,12 @@ public class ListaTareaActivitykdcc extends AppCompatActivity {
     private ActivityListaTareaActivitykdccBinding binding;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menukdcc,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -41,5 +47,7 @@ public class ListaTareaActivitykdcc extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
     }
 }
