@@ -33,9 +33,7 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_list_tareas);
         cedula = getIntent().getExtras().getString("cedula");
         negocio = getIntent().getExtras().getString("negocio");
-
         listViewDatos = findViewById(R.id.listViewDatos);
-
         listViewDatos.setOnItemClickListener(this);
 
         if (negocio.equals("")){
@@ -47,7 +45,6 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
             Cursor cursor =  sql.rawQuery(consulta, null);
             if (cursor.moveToFirst()){
                 do {
-
                     Tarea t = new Tarea();
                     t.setCedula(cursor.getString(0));
                     t.setTarea(cursor.getString(1));
@@ -79,7 +76,6 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
             }
 
         }
-
 
       mAdpater = new ListAdapterCCKD (ListTareasActivity.this,R.layout.item_rouwkdcc,mlista);
 
