@@ -3,6 +3,7 @@ package com.uta.caizaguanokevinsupletorio;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -37,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
         String consulta = "SELECT Cedula,Contrasenia FROM Usuarios  WHERE Cedula=" + usuario;
         Cursor cursor = sql.rawQuery(consulta,null);
         if ( cursor.moveToFirst()){
-
+            String contrasenia_ = cursor.getString(1);
+             if (contraseña.equals(contrasenia_)){
+                 Intent intent = new Intent(this,ListaTareasActivityKDCC.class);
+                 startActivity(intent);
+             }else{
+                 Toast.makeText(this, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
+             }
 
 
         }else{
@@ -51,22 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public  void registrar(View view)
     {
-        try {
-            UsuariosHelperKDCC  usuariohelper = new UsuariosHelperKDCC(this, "usuariosDB",null,1);
-            SQLiteDatabase sql = usuariohelper.getWritableDatabase();
-            ContentValues lstvalores = new ContentValues();
-            lstvalores.put("Cedula","1805349246");
-            lstvalores.put("Contrasenia","Kevin123@");
-            lstvalores.put("Nombre","Kevin Caizaguano");
-            sql.insert("Usuarios", null,lstvalores);
-            sql.close();
 
-            Toast.makeText(this,"Insertado con exito", Toast.LENGTH_SHORT).show();
-
-
-        }catch (Exception ex){
-            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
-        }
 
     }
 }
