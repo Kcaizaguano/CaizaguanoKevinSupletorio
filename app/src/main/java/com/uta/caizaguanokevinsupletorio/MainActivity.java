@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             String contrasenia_ = cursor.getString(1);
              if (contraseña.equals(contrasenia_)){
                  Intent intent = new Intent(this,ListaTareasActivityKDCC.class);
+                 intent.putExtra("cedula",usuario);
                  startActivity(intent);
              }else{
                  Toast.makeText(this, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();

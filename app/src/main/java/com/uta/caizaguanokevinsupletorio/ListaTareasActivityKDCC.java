@@ -17,11 +17,13 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     TabItem tab1,tab2;
+    String cedula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_tareas_kdcc);
+        cedula = getIntent().getExtras().getString("cedula");
 
     }
 
@@ -37,6 +39,7 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.itemAgregar:
                 Intent intent = new Intent(this,RegistrarTareaActivityKDCC.class);
+                intent.putExtra("cedula",cedula);
                 startActivity(intent);
                 break;
         }
