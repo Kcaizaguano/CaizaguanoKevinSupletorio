@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -36,6 +37,7 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
         listViewDatos = findViewById(R.id.listViewDatos);
 
         listViewDatos.setOnItemClickListener(this);
+        registerForContextMenu(listViewDatos);
 
         if (negocio.equals("")){
 
@@ -88,6 +90,12 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
       mAdpater = new ListAdapterCCKD (ListTareasActivity.this,R.layout.item_rouwkdcc,mlista);
 
         listViewDatos.setAdapter(mAdpater);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.menucrudkdcc,menu);
     }
 
     @Override
