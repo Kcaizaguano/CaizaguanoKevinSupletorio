@@ -18,7 +18,7 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     TabItem tab1,tab2;
-    PagerController pagerController;
+    PagerController pagerAdapter;
     String cedula;
 
     @Override
@@ -28,6 +28,35 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
         cedula = getIntent().getExtras().getString("cedula");
         tabLayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewpager);
+        pagerAdapter =  new PagerController(getSupportFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+                if (tab.getPosition() == 0){
+                    pagerAdapter.notifyDataSetChanged();
+                }
+
+                if (tab.getPosition() == 1){
+                    pagerAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
 
