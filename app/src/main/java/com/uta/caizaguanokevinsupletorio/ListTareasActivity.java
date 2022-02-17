@@ -24,35 +24,63 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
     private List<Tarea> mlista = new ArrayList<Tarea>();
     ListAdapterCCKD mAdpater;
     String cedula;
+    String negocio ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_tareas);
         cedula = getIntent().getExtras().getString("cedula");
+        negocio = getIntent().getExtras().getString("negocio");
 
         listViewDatos = findViewById(R.id.listViewDatos);
 
         listViewDatos.setOnItemClickListener(this);
 
+        if (negocio.equals("")){
 
-        TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
-        SQLiteDatabase sql = tareasHelper.getReadableDatabase();
+            TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
+            SQLiteDatabase sql = tareasHelper.getReadableDatabase();
 
-        String consulta = "SELECT Cedula,Tarea,Tipo,Notas FROM Tareas  WHERE Cedula=" + cedula;
-        Cursor cursor =  sql.rawQuery(consulta, null);
-        if (cursor.moveToFirst()){
-            do {
+            String consulta = "SELECT Cedula,Tarea,Tipo,Notas FROM Tareas  WHERE Tipo='Personal' AND Cedula=" + cedula;
+            Cursor cursor =  sql.rawQuery(consulta, null);
+            if (cursor.moveToFirst()){
+                do {
 
-                Tarea t = new Tarea();
-                t.setCedula(cursor.getString(0));
-                t.setTarea(cursor.getString(1));
-                t.setTipo(cursor.getString(2));
-                t.setDescripcion(cursor.getString(3));
-                mlista.add(t);
-            }while (cursor.moveToNext());
+                    Tarea t = new Tarea();
+                    t.setCedula(cursor.getString(0));
+                    t.setTarea(cursor.getString(1));
+                    t.setTipo(cursor.getString(2));
+                    t.setDescripcion(cursor.getString(3));
+                    mlista.add(t);
+                }while (cursor.moveToNext());
+
+            }
+
+        }else{
+
+            TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
+            SQLiteDatabase sql = tareasHelper.getReadableDatabase();
+
+            String consulta = "SELECT Cedula,Tarea,Tipo,Notas FROM Tareas  WHERE Tipo='Negocios' AND Cedula=" + cedula;
+            Cursor cursor =  sql.rawQuery(consulta, null);
+            if (cursor.moveToFirst()){
+                do {
+
+                    Tarea t = new Tarea();
+                    t.setCedula(cursor.getString(0));
+                    t.setTarea(cursor.getString(1));
+                    t.setTipo(cursor.getString(2));
+                    t.setDescripcion(cursor.getString(3));
+                    mlista.add(t);
+                }while (cursor.moveToNext());
+
+            }
 
         }
+
+
+
 
 
 
