@@ -1,5 +1,6 @@
 package com.uta.caizaguanokevinsupletorio.Controlador;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.uta.caizaguanokevinsupletorio.Datos.TareaHelperKDCC;
 import com.uta.caizaguanokevinsupletorio.R;
 
 /**
@@ -55,6 +57,8 @@ public class PersonalFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -63,4 +67,6 @@ public class PersonalFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_personal, container, false);
     }
+
+
 }

@@ -5,13 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.uta.caizaguanokevinsupletorio.Controlador.PagerController;
+import com.uta.caizaguanokevinsupletorio.Datos.TareaHelperKDCC;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ListaTareasActivityKDCC extends AppCompatActivity {
 
@@ -20,6 +30,7 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
     TabItem tab1,tab2;
     PagerController pagerAdapter;
     String cedula;
+    private ListView listViewDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +41,10 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager);
         pagerAdapter =  new PagerController(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
+        listViewDatos = findViewById(R.id.listViewDatos);
 
+
+        cargar();
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -60,6 +74,25 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
 
     }
 
+    private List<String> cargarDatos() {
+        List<String> lista = new ArrayList<String>();
+
+        TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
+        SQLiteDatabase sql = tareasHelper.getReadableDatabase();
+
+        String consulta = "SELECT Tarea,Notas FROM Tareas  WHERE Cedula=" + cedula;
+        Cursor cursor =  sql.rawQuery(consulta, null);
+        if (cursor.moveToFirst()){
+            do {
+                lista.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+
+        }
+
+        return  lista;
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -77,5 +110,35 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void cargar(){
+
+        try {
+
+            ArrayList<String> list = new ArrayList<>();
+            TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
+            SQLiteDatabase sql = tareasHelper.getReadableDatabase();
+
+            String consulta = "SELECT Tarea,Notas FROM Tareas  WHERE Cedula=" + cedula;
+            Cursor cursor =  sql.rawQuery(consulta, null);
+            if (cursor.moveToFirst()){
+                do {
+                    list.add(cursor.getString(0) + "  "+
+                            cursor.getString(1));
+                }while (cursor.moveToNext());
+
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, list);
+
+            listViewDatos.setAdapter(adapter);
+
+        }catch (Exception ex){
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+
     }
 }
