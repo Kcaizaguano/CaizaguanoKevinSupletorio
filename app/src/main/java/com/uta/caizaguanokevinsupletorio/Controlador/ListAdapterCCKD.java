@@ -44,10 +44,6 @@ public class ListAdapterCCKD  extends ArrayAdapter<Tarea>{
         notasNombre.setText(tarea.getDescripcion());
 
 
-
-
-
-
         return  view;
 
     }

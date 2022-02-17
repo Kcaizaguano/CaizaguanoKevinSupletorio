@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -140,5 +141,11 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
         }
 
 
+    }
+
+    public  void  mostrarTareas(View view){
+        Intent intent = new Intent(this,ListTareasActivity.class);
+        intent.putExtra("cedula",cedula);
+        startActivity(intent);
     }
 }
