@@ -13,7 +13,7 @@ public class TareaHelperKDCC extends SQLiteOpenHelper {
             "Cedula TEXT," +
             "Tarea TEXT," +
             "Tipo TEXT," +
-            "Descripcion TEXT)";
+            "Notas TEXT)";
 
 
 

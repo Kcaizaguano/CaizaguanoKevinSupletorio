@@ -8,15 +8,23 @@
     tools:context=".RegistrarTareaActivityKDCC">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextTextTarea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="@string/txt_Tarea"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextTextNotas"
+        android:layout_width="match_parent"
+        android:layout_height="283dp"
+        android:ems="10"
+        android:hint="@string/txt_Notes"
+        android:inputType="textPersonName" />
 </LinearLayout>
