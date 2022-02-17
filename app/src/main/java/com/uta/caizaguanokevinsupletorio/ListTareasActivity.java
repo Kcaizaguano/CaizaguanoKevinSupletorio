@@ -37,7 +37,6 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
         listViewDatos = findViewById(R.id.listViewDatos);
 
         listViewDatos.setOnItemClickListener(this);
-        registerForContextMenu(listViewDatos);
 
         if (negocio.equals("")){
 
@@ -82,14 +81,11 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
         }
 
 
-
-
-
-
-
       mAdpater = new ListAdapterCCKD (ListTareasActivity.this,R.layout.item_rouwkdcc,mlista);
 
         listViewDatos.setAdapter(mAdpater);
+        registerForContextMenu(listViewDatos);
+
     }
 
     @Override
