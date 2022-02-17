@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CaizaguanoKevinSupletorio">
         <activity
+            android:name=".RegistrarTareaActivityKDCC"
+            android:exported="false" />
+        <activity
             android:name=".ListaTareaActivitykdcc"
             android:exported="false"
             android:label="@string/title_activity_lista_tarea_activitykdcc"
