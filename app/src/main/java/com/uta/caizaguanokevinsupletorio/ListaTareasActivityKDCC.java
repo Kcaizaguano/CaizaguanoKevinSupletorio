@@ -11,12 +11,14 @@ import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.uta.caizaguanokevinsupletorio.Controlador.PagerController;
 
 public class ListaTareasActivityKDCC extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager viewPager;
     TabItem tab1,tab2;
+    PagerController pagerController;
     String cedula;
 
     @Override
@@ -24,6 +26,8 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_tareas_kdcc);
         cedula = getIntent().getExtras().getString("cedula");
+        tabLayout = findViewById(R.id.tablayout);
+        viewPager = findViewById(R.id.viewpager);
 
     }
 
