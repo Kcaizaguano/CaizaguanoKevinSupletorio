@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,7 +36,19 @@ public class RegistrarTareaActivityKDCC extends AppCompatActivity {
         op.add("Negocios");
 
         ArrayAdapter adp = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,op);
+        spinnerTipo.setAdapter(adp);
+        spinnerTipo.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String elem = (String) spinnerTipo.getAdapter().getItem(i);
+                Toast.makeText(RegistrarTareaActivityKDCC.this,elem, Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 
