@@ -1,5 +1,6 @@
 package com.uta.caizaguanokevinsupletorio;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -88,7 +90,21 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        //getMenuInflater().inflate(R.menu.menucrudkdcc,menu);
+        getMenuInflater().inflate(R.menu.menucrudkdcc,menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.CrudBorrar:
+                Toast.makeText(this, "selecciono borrar", Toast.LENGTH_SHORT).show();
+
+                return  true;
+        }
+
+        return super.onContextItemSelected(item);
+
     }
 
     @Override
@@ -96,7 +112,7 @@ public class ListTareasActivity extends AppCompatActivity implements AdapterView
 
         ListAdapter la = (ListAdapter) adapterView.getAdapter();
 
-        //Toast.makeText(view.getContext(), la.getItem(i).toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(view.getContext(), la.getItem(i).toString(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this,RegistrarTareaActivityKDCC.class);
         intent.putExtra("tarea",mAdpater.getItem(i).getTarea());
         intent.putExtra("notas",mAdpater.getItem(i).getDescripcion());

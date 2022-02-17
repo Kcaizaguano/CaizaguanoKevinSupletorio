@@ -56,7 +56,6 @@ public class RegistrarTareaActivityKDCC extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 tipo = (String) spinnerTipo.getAdapter().getItem(i);
 
-
             }
 
             @Override
@@ -111,6 +110,28 @@ public class RegistrarTareaActivityKDCC extends AppCompatActivity {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
+
+    }
+
+
+
+    public void actualizar (){
+
+        TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this
+                ,"tareasDB",null,1);
+
+        SQLiteDatabase sql = tareasHelper.getWritableDatabase();
+
+        String tarea = editTextTarea.getText().toString();
+        String notas = editTextNotas.getText().toString();
+        ContentValues lstvalores = new ContentValues();
+        lstvalores.put("Cedula",cedula);
+        lstvalores.put("Tarea",tarea);
+        lstvalores.put("Notas",notas);
+        lstvalores.put("Tipo",tipo);
+
+       // int cantidad = sql.update("Tareas",lstvalores,"Codigo="+ codigo,null);
+        sql.close();
 
     }
 }
