@@ -5,13 +5,13 @@
     <item
         android:id="@+id/itemVisto"
         android:title="Item1"
-
+        android:icon="@drawable/ic_baseline_check_24"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/itemX"
         android:title="Item1"
-
+        android:icon="@drawable/ic_action_delete"
         app:showAsAction="ifRoom"
         />
 
