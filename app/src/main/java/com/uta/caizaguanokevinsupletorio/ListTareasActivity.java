@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.uta.caizaguanokevinsupletorio.Controlador.ListAdapterCCKD;
 import com.uta.caizaguanokevinsupletorio.Datos.TareaHelperKDCC;
@@ -15,7 +18,7 @@ import com.uta.caizaguanokevinsupletorio.Entidades.Tarea;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListTareasActivity extends AppCompatActivity {
+public class ListTareasActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView listViewDatos;
     private List<Tarea> mlista = new ArrayList<Tarea>();
@@ -29,6 +32,8 @@ public class ListTareasActivity extends AppCompatActivity {
         cedula = getIntent().getExtras().getString("cedula");
 
         listViewDatos = findViewById(R.id.listViewDatos);
+
+        listViewDatos.setOnItemClickListener(this);
 
 
         TareaHelperKDCC tareasHelper = new TareaHelperKDCC(this,"tareasDB",null,1);
@@ -48,15 +53,17 @@ public class ListTareasActivity extends AppCompatActivity {
             }while (cursor.moveToNext());
 
         }
-        /*
-        mlista.add(new Tarea("185624","Estudiar","matematicas , fisica","personal"));
-        mlista.add(new Tarea("185624","Comer","matematicas , fisica","personal"));
-        mlista.add(new Tarea("185624","Dormir","matematicas , fisica","personal"));
 
-         */
+
+
 
       mAdpater = new ListAdapterCCKD (ListTareasActivity.this,R.layout.item_rouwkdcc,mlista);
 
         listViewDatos.setAdapter(mAdpater);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Toast.makeText(this,  "la posicion es ", Toast.LENGTH_SHORT).show();
     }
 }
