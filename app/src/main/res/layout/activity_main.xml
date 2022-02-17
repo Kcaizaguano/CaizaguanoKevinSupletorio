@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/txt_Usuario"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:text="1805349246" />
 
     <EditText
         android:id="@+id/editTextTextContraseña"
@@ -21,17 +22,20 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/txt_Contraseña"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:text="Kevin123@" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="logiarse"
         android:text="Ingresar" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="registrar"
         android:text="Registrar" />
 </LinearLayout>
