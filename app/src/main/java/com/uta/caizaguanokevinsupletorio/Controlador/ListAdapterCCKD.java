@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,9 +34,17 @@ public class ListAdapterCCKD  extends ArrayAdapter<Tarea>{
         View view = convertView;
 
         if (view == null)
-            view = LayoutInflater.from(mcontext).inflate(R.layout.item_rouwkdcc,null);
+            view = LayoutInflater.from(mcontext).inflate(resourceLayout,null);
 
         Tarea  tarea = mlist.get(position);
+        TextView tareaNombre = view.findViewById(R.id.textViewTarea);
+        tareaNombre.setText(tarea.getTarea());
+
+        TextView notasNombre = view.findViewById(R.id.textViewNotas);
+        notasNombre.setText(tarea.getDescripcion());
+
+
+
 
 
 
