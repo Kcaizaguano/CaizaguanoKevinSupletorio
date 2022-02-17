@@ -148,13 +148,13 @@ public class RegistrarTareaActivityKDCC extends AppCompatActivity {
             TareaHelperKDCC tareaHelperKDCCHelper= new TareaHelperKDCC(this
                     ,"tareasDB",null,1);
             SQLiteDatabase sql = tareaHelperKDCCHelper.getReadableDatabase();
-            String consulta = "SELECT Codigo FROM Tareas  WHERE Tarea=" + tareA;
+            String consulta = "SELECT Codigo FROM Tareas  WHERE Tarea=" + tareA ;
 
             Cursor cursor = sql.rawQuery(consulta,null);
 
             if ( cursor.moveToFirst()){
 
-                Toast.makeText(this, cursor.getInt(0), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, cursor.getString(0), Toast.LENGTH_SHORT).show();
 
             }else{
                 Toast.makeText(this, "No se  encotraron registrso en la tabla ",
