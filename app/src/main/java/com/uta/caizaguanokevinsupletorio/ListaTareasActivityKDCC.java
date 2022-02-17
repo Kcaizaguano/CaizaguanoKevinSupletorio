@@ -44,7 +44,7 @@ public class ListaTareasActivityKDCC extends AppCompatActivity {
         listViewDatos = findViewById(R.id.listViewDatos);
 
 
-        cargar();
+        //cargar();
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
