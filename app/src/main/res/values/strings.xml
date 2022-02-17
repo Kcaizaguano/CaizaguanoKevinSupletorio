@@ -4,4 +4,7 @@
     <string name="txt_Contraseña">Contraseña</string>
     <string name="txt_cedula">Cedula</string>
     <string name="txt_Nombre">Nombre</string>
+    <string name="title_activity_lista_tarea_activitykdcc">ListaTareaActivitykdcc</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
